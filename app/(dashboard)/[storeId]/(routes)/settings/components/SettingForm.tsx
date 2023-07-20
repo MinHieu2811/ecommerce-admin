@@ -42,7 +42,7 @@ export const SettingForm: React.FC<SettingFormProps> = ({ initialData }) => {
     resolver: zodResolver(formSchema),
     defaultValues: initialData,
   });
-  const origin = useOrigin()
+  const origin = useOrigin();
 
   const onSubmit = async (data: SettingsFormValues) => {
     try {
@@ -60,17 +60,17 @@ export const SettingForm: React.FC<SettingFormProps> = ({ initialData }) => {
 
   const onDelete = async () => {
     try {
-      setLoading(true)
-      await axios.delete(`/api/stores/${params?.storeId}`)
-      router?.refresh()
-      router?.push("/")
-      toast?.success("Store deleted.")
+      setLoading(true);
+      await axios.delete(`/api/stores/${params?.storeId}`);
+      router?.refresh();
+      router?.push("/");
+      toast?.success("Store deleted.");
     } catch (error) {
-      toast?.error("Make sure you removed all products and categories first.")
+      toast?.error("Make sure you removed all products and categories first.");
     } finally {
-      setOpen(false)
+      setOpen(false);
     }
-  }
+  };
   return (
     <>
       <AlertModal
@@ -126,7 +126,11 @@ export const SettingForm: React.FC<SettingFormProps> = ({ initialData }) => {
         </form>
       </Form>
       <Separator />
-      <ApiAlert title="NEXT_PUBLIC_API_URL" description={`${origin}/api/${params?.storeId}`} variant="public" />
+      <ApiAlert
+        title="NEXT_PUBLIC_API_URL"
+        description={`${origin}/api/${params?.storeId}`}
+        variant="public"
+      />
     </>
   );
 };

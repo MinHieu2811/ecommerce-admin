@@ -13,6 +13,9 @@ const nextConfig = {
     clerkAfterSignIn: process.env.NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL,
     clerkAfterSignUp: process.env.NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL,
   },
+  images: {
+    domains: ["res.cloudinary.com"]
+  }
 };
 
 module.exports = nextConfig;
