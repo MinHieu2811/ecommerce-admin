@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { CategoryColumn } from "./columns";
+import { SizeColumn } from "./columns";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,7 +17,7 @@ import axios from "axios";
 import { AlertModal } from "@/components/modals";
 
 interface CellActionProps {
-  data: CategoryColumn;
+  data: SizeColumn;
 }
 
 export const CellAction: React.FC<CellActionProps> = ({ data }) => {
@@ -28,20 +28,20 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
   const [open, setOpen] = useState(false);
   const onCopy = (id: string) => {
     navigator?.clipboard?.writeText(id);
-    toast?.success("Category ID copied to the clipboard.");
+    toast?.success("Size ID copied to the clipboard.");
   };
 
   const onDelete = async () => {
     try {
       setLoading(true);
       await axios.delete(
-        `/api/${params?.storeId}/categories/${data?.id}`
+        `/api/${params?.storeId}/sizes/${data?.id}`
       );
       router?.refresh();
-      toast?.success("Category deleted.");
+      toast?.success("Size deleted.");
     } catch (error) {
       toast?.error(
-        "Make sure you removed all categories using this billboard first."
+        "Make sure you removed all products using this size first."
       );
     } finally {
       setOpen(false);
@@ -70,7 +70,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() =>
-              router?.push(`/${params?.storeId}/categories/${data?.id}`)
+              router?.push(`/${params?.storeId}/sizes/${data?.id}`)
             }
           >
             <Edit className="w-4 h-4 mr-2" />
