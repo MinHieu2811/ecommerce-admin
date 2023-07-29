@@ -2,7 +2,7 @@ import { format } from "date-fns";
 import { SizeColumn } from "./[sizeId]/components/columns";
 import { SizeClient } from "./components";
 
-const BillboardPage = async ({ params }: { params: { storeId: string } }) => {
+const SizePage = async ({ params }: { params: { storeId: string } }) => {
   const sizes = await prismadb?.size?.findMany({
     where: {
       storeId: params?.storeId,
@@ -30,4 +30,4 @@ const BillboardPage = async ({ params }: { params: { storeId: string } }) => {
   );
 };
 
-export default BillboardPage;
+export default SizePage;
